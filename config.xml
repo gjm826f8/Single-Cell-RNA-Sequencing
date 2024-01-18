@@ -1,0 +1,13 @@
+<data>
+	<filepath>
+		<option>Enter yourself</option>
+		<option>D:\Others\MH\Omics data</option>
+	<option>D:\Others\MH\Omics data\Transcriptomics\Mouse\</option><option>D:\Others\MH\Omics data\Transcriptomics\Mouse\LKO_HFD</option><option>D:\Others\MH\Omics data\Transcriptomics\Mouse\scAD_AT56_siPtgds (microarray)</option><option>D:\Others\MH\Omics data\Transcriptomics\Mouse\scAD_AM630</option><option>D:\Others\MH\Omics data\Transcriptomics\Mouse\AKO_HFD</option></filepath>
+	<id>
+		<option>ensembl_gene_id</option>
+	<option>GeneID</option><option>Accession</option><option>Geneid</option><option>Gene Accession</option><option>Name</option><option>id</option></id>
+	<fc>
+		<option>FC</option>
+		<option>log2FoldChange</option>
+	<option>drug vs. control - Fold change</option><option>log2FC_epAKO_epWT</option><option>FC_epAKO_epWT</option><option>Fold change (BAT-AKO_BAT-WT)</option></fc>
+</data>
