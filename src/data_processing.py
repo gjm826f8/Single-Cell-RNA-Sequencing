@@ -12,7 +12,7 @@ import src.read_file as file
 split_char_array = ['-', '_']
 df_output_array = []
 df_filter_array = []
-def data_process(id_col_name_array, fc_col_name_array):
+def data_process(id_col_name_array, fc_col_name_array, pv_col_name_array):
     df_output_array.clear()
 
     for i in range(len(file.df_array)):
@@ -21,7 +21,9 @@ def data_process(id_col_name_array, fc_col_name_array):
             if j in id_col_name_array:
                 df_output[j] = file.df_array[i][j]
             if j in fc_col_name_array:
-                df_output[j] = file.df_array[i][j]
+                df_output[j] = file.df_array[i][j].round(2)
+            if j in pv_col_name_array:
+                df_output[j] = file.df_array[i][j].round(3)
 
             for split_char in split_char_array:
                 if split_char in j:
@@ -30,8 +32,12 @@ def data_process(id_col_name_array, fc_col_name_array):
                         new_col_name = j[0:j.rindex(split_char)].strip()
                         if new_col_name not in df_output.columns.values:
                             df_output[new_col_name] = file.df_array[i][
-                                [col for col in file.df_array[i].columns if new_col_name in col]].mean(axis=1,
-                                                                                                  numeric_only=True)
+                                [col for col in file.df_array[i].columns if new_col_name in col]]\
+                                .mean(axis=1, numeric_only=True).round(1)
+                            df_output[new_col_name + "_STD"] = file.df_array[i][
+                                [col for col in file.df_array[i].columns if new_col_name in col]]\
+                                .std(axis=1, numeric_only=True).round(1)
+        df_output.insert(0, "file_name", str(file.df_map[i]).split("\\")[file.df_map[i].split("\\").__len__() - 1])
         df_output_array.append(df_output)
 
     return df_output_array

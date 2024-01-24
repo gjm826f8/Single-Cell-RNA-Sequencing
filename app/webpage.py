@@ -15,7 +15,7 @@ from src.config import read_config, write_config
 
 st.sidebar.header("Filter by Gene/Protein ID")
 
-file_path_array, id_array, fc_array = read_config()
+file_path_array, id_array, fc_array, pv_array = read_config()
 
 # Initialization
 if "reload_file" not in st.session_state:
@@ -58,7 +58,7 @@ if file_path:
                 st.session_state[file_name] = sheet_array
             else:
                 sheet_array = st.session_state[file_name]
-            sheet_select = st.multiselect(file_name, sheet_array, key=file_name+"\\"+str(multiselect_key))
+            sheet_select = st.multiselect(file_name, sheet_array, default=sheet_array, key=file_name+"\\"+str(multiselect_key))
             sheet_select_map[file_name] = sheet_select
             multiselect_key += 1
         # Every form must have a submit button.
@@ -106,6 +106,18 @@ with col1:
         "Fold Change column name", fc_array
     )
 
+with col2:
+    new_pv_col_name = st.text_input(
+        "Enter a new P-Value column name", ""
+    )
+if len(new_pv_col_name) != 0 and new_pv_col_name not in pv_array:
+    write_config("pv", new_pv_col_name)
+    pv_array.append(new_pv_col_name)
+with col1:
+    pv_col_name = st.multiselect(
+        "P-Value column name", pv_array
+    )
+
 id = st.text_input(
     "Gene/Protein ID (Unique Value, ex. ENSMUSG00000069920)",""
 )
@@ -113,11 +125,11 @@ id = st.text_input(
 if st.button("Filter Dataset", type="primary"):
     if len(id_col_name) == 0:
         st.error("Please indicate Gene/Protein ID column name")
-    if len(fc_col_name) == 0:
-        st.error("Please indicate Fold Change column name")
+    # if len(fc_col_name) == 0:
+    #     st.error("Please indicate Fold Change column name")
     if len(id) == 0:
         st.error("Please indicate Gene/Protein ID")
-    data_process(id_col_name, fc_col_name)
+    data_process(id_col_name, fc_col_name, pv_col_name)
     data_filter(id, id_col_name)
     for idx in range(len(df_filter_array)):
         # st.markdown("###" + df_map + "###")

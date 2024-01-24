@@ -49,8 +49,9 @@ def read_file(file_path):
             if file_sheet_map[file_name][sheet_name]:
                 df = pd.read_excel(file_name, sheet_name=sheet_name)
                 df_array.append(df)
-                df_map[idx] = file_name + " " + sheet_name
+                # df_map[idx] = file_name + " " + sheet_name
+                df_map[idx] = file_name
                 idx += 1
                 print(file_name, sheet_name, df.shape)
-        idx = (int(idx / 100) + 1) * 100
+        # idx = (int(idx / 100) + 1) * 100
     return df_array

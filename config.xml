@@ -10,4 +10,6 @@
 		<option>FC</option>
 		<option>log2FoldChange</option>
 	<option>drug vs. control - Fold change</option><option>log2FC_epAKO_epWT</option><option>FC_epAKO_epWT</option><option>Fold change (BAT-AKO_BAT-WT)</option></fc>
+	<pv>
+	<option>pvalue_epAKO_epWT</option></pv>
 </data>

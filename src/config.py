@@ -5,6 +5,7 @@ def read_config():
     file_path_array = []
     id_array = []
     fc_array = []
+    pv_array = []
     root = tree.getroot()
     for child in root:
         for grandchild in child:
@@ -14,7 +15,9 @@ def read_config():
                 id_array.append(grandchild.text)
             elif child.tag == "fc":
                 fc_array.append(grandchild.text)
-    return file_path_array, id_array, fc_array
+            elif child.tag == "pv":
+                pv_array.append(grandchild.text)
+    return file_path_array, id_array, fc_array, pv_array
 
 def write_config(tag, text):
     print("write_config", tag, text)
