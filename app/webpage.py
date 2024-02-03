@@ -11,6 +11,8 @@ sys.path.append(project_root_path)
 from src.read_file import getFileFromPath, get_sheetnames_xlsx, read_file, get_file_sheet_map, df_map
 from src.data_processing import data_process, data_filter, df_filter_array
 from src.config import read_config, write_config
+from src.output_file import export_file
+
 
 
 st.sidebar.header("Filter by Gene/Protein ID")
@@ -39,6 +41,13 @@ else:
         "Please enter the folder path", "", disabled=True
     )
     file_path = file_path_select
+
+export_file_path_input = st.sidebar.text_input(
+        "Export File Name", "Output"
+    )
+if st.sidebar.button("Export Data"):
+    rst_msg = export_file(file_path, export_file_path_input)
+    st.sidebar.info(rst_msg)
 
 st.sidebar.header("Files' Name List:")
 
@@ -131,6 +140,7 @@ if st.button("Filter Dataset", type="primary"):
         st.error("Please indicate Gene/Protein ID")
     data_process(id_col_name, fc_col_name, pv_col_name)
     data_filter(id, id_col_name)
-    for idx in range(len(df_filter_array)):
-        # st.markdown("###" + df_map + "###")
-        st.write(df_filter_array[idx])
+
+for idx in range(len(df_filter_array)):
+    # st.markdown("###" + df_map + "###")
+    st.write(df_filter_array[idx])

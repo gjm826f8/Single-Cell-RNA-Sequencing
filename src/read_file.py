@@ -15,7 +15,7 @@ def getFileFromPath(st, folder_path):
         # st.sidebar.write((len(path) - len(folder_path.split(os.sep))) * '---', os.path.basename(root))
         for file in files:
             # file extension is xlsx and file name not begin with ./~
-            if file.endswith(".xlsx") and not file.startswith(".") and not file.startswith("~"):
+            if file.endswith(".xlsx") and not file.startswith(".") and not file.startswith("~") and not file.startswith("Output"):
                 # st.sidebar.write((len(path) - len(folder_path.split(os.sep)) + 1) * '---', file)
                 file_name_array.append(root + "\\" + file)
     for file_name in file_name_array:
