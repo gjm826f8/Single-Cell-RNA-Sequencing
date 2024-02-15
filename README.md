@@ -21,13 +21,16 @@
 6. After importing the environment file, right click on the start triangle and choose "Open Terminal"<br>
    ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/f9d5fb88-fa44-48c9-bd06-8af2c1dd505b)
 
-7. Navigate to the folder that you download the project file streamlit_app.py and type the following commend to run the app<br>
+7. Download the code zip file from GitHub to your local directory
+   ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/7f097808-0a31-40cb-acf8-95d8c440bb8a)
+
+8. Navigate to the folder that you download the project file webpage.py and type the following commend to run the app<br>
    ```Shell
    python -m streamlit run webpage.py
    ```
    Press enter and the web page will pop up.
    ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/725beb9d-921d-4d56-8ce9-a54e341cf524)
    ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/4dc063be-0db5-4dd7-bd1a-8b82ed934f4d)
-8. If you want to terminate the app then go to the terminal again and press "Ctrl+C" and then close the browser<br>
+9. If you want to terminate the app then go to the terminal again and press "Ctrl+C" and then close the browser<br>
   ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/d3b2aeab-2491-482f-b967-58302bcaa48f)
 
