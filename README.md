@@ -21,10 +21,19 @@
 6. After importing the environment file, right-click on the start triangle and choose "Open Terminal"<br>
    ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/f9d5fb88-fa44-48c9-bd06-8af2c1dd505b)
 
-7. Download the code zip file from GitHub to your local directory
+7. Download the code zip file from GitHub to your local directory and upzip it
    ![image](https://github.com/gjm826f8/Single-Cell-RNA-Sequencing/assets/26255126/7f097808-0a31-40cb-acf8-95d8c440bb8a)
 
-8. Navigate to the folder that you download the project file webpage.py, and type the following command to run the app<br>
+8. Navigate to the folder that you download the project file webpage.py, and run the app (remember to press enter after each command line)<br>
+   For windows user, you can change the path to d drive by typing:
+   ```Shell
+   d:
+   ```
+   Replace the [your_file_path] in the following command to the file path, ex. D:\personal\project\
+   ```Shell
+   cd [your_file_path]
+   ```
+   Type the following command to start the application
    ```Shell
    python -m streamlit run webpage.py
    ```
