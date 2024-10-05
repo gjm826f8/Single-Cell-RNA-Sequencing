@@ -17,7 +17,7 @@ def getFileFromPath(st, folder_path):
             # file extension is xlsx and file name not begin with ./~
             if file.endswith(".xlsx") and not file.startswith(".") and not file.startswith("~") and not file.startswith("Output"):
                 # st.sidebar.write((len(path) - len(folder_path.split(os.sep)) + 1) * '---', file)
-                file_name_array.append(root + "\\" + file)
+                file_name_array.append(os.path.join(root, file))
     for file_name in file_name_array:
         sheet_able_map = {}
         for sheet in get_sheetnames_xlsx(file_name):

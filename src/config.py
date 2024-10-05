@@ -1,5 +1,10 @@
+import os
 import xml.etree.ElementTree as ET
-tree = ET.parse('..\\config.xml')
+
+current_path = os.path.abspath(__file__)
+parent_path = os.path.dirname(current_path)
+config_file_path = os.path.join(parent_path, "..", "config.xml")
+tree = ET.parse(config_file_path)
 
 def read_config():
     file_path_array = []
@@ -25,4 +30,4 @@ def write_config(tag, text):
     new_ele = ET.Element("option")
     new_ele.text = text
     root.find(tag).append(new_ele)
-    tree.write("..\\config.xml")
+    tree.write(config_file_path)

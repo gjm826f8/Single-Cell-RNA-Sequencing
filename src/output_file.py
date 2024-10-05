@@ -14,14 +14,12 @@ def export_file(file_path, export_file_path_input):
 
     if file_path == "":
         return "Empty File Path (Skip export process)"
-    if file_path[-1] != '\\':
-        file_path = file_path + '\\'
     if len(df_process.df_filter_array) == 0:
         return "Empty Dataset (No need to export)"
     if export_file_path_input == "":
         return "Please Indicate Export File Name"
 
-    output_file_name = file_path + export_file_path_input + ".xlsx"
+    output_file_name = os.path.join(file_path, export_file_path_input + ".xlsx")
     if os.path.isfile(output_file_name):
         return "File Already Exist (Ignore export operation)"
 
