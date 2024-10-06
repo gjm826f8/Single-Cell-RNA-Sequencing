@@ -44,11 +44,16 @@ def data_process(id_col_name_array, fc_col_name_array, pv_col_name_array):
     return df_output_array
 
 def data_filter(id, id_col_name_array):
+    warn_msg = ""
     df_filter_array.clear()
     for df in df_output_array:
         for col_name in df.columns.values:
             if col_name in id_col_name_array:
-                df_filter = df[df[col_name].str.lower().str.contains(r'^'+id.lower())]
+                nan_value_cnt = df[col_name].isnull().sum()
+                if nan_value_cnt > 0:
+                    warn_msg += df["file_name"][0] + " column [" + col_name + "] has " + str(nan_value_cnt) + " empty values.\n"
+                df_filter = df[df[col_name].notnull()]
+                df_filter = df_filter[df_filter[col_name].str.lower().str.contains(r'^'+id.lower())]
                 df_filter_array.append(df_filter)
                 break
-    return df_filter_array
+    return df_filter_array, warn_msg

@@ -139,7 +139,9 @@ if st.button("Filter Dataset", type="primary"):
     if len(id) == 0:
         st.error("Please indicate Gene/Protein ID")
     data_process(id_col_name, fc_col_name, pv_col_name)
-    data_filter(id, id_col_name)
+    df_array, warn_msg = data_filter(id, id_col_name)
+    st.info(warn_msg)
+
 
 for idx in range(len(df_filter_array)):
     # st.markdown("###" + df_map + "###")
