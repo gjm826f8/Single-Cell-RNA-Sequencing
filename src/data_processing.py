@@ -37,7 +37,8 @@ def data_process(id_col_name_array, fc_col_name_array, pv_col_name_array):
                             df_output[new_col_name + "_STD"] = file.df_array[i][
                                 [col for col in file.df_array[i].columns if new_col_name in col]]\
                                 .std(axis=1, numeric_only=True).round(1)
-        df_output.insert(0, "file_name", str(file.df_map[i]).split("\\")[file.df_map[i].split("\\").__len__() - 1])
+        # df_output.insert(0, "file_name", str(file.df_map[i]).split("\\")[file.df_map[i].split("\\").__len__() - 1])
+        df_output.insert(0, "file_name", os.path.split(file.df_map[i])[1])
         df_output_array.append(df_output)
 
     return df_output_array
@@ -47,7 +48,7 @@ def data_filter(id, id_col_name_array):
     for df in df_output_array:
         for col_name in df.columns.values:
             if col_name in id_col_name_array:
-                df_filter = df[df[col_name] == id]
+                df_filter = df[df[col_name].str.lower() == id.lower()]
                 df_filter_array.append(df_filter)
                 break
     return df_filter_array
