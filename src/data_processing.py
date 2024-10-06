@@ -48,7 +48,7 @@ def data_filter(id, id_col_name_array):
     for df in df_output_array:
         for col_name in df.columns.values:
             if col_name in id_col_name_array:
-                df_filter = df[df[col_name].str.lower() == id.lower()]
+                df_filter = df[df[col_name].str.lower().str.contains(r'^'+id.lower())]
                 df_filter_array.append(df_filter)
                 break
     return df_filter_array

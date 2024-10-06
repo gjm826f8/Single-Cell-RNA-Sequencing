@@ -128,7 +128,7 @@ with col1:
     )
 
 id = st.text_input(
-    "Gene/Protein ID (Unique Value, ex. ENSMUSG00000069920)",""
+    "Gene/Protein ID (Not case sensitive)(Unique Value or Prefix, ex. Cetn4 / Cetn)",""
 )
 
 if st.button("Filter Dataset", type="primary"):
